@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>QuizMaster – AI Applications</title>
+<style>
+:root{--bg:#f5f6fb;--card:#fff;--tx:#1d2140;--mu:#6b7090;--pr:#5b5bd6;--ok:#1a9a5b;--no:#d64545;--bd:#e2e4f0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){color-scheme:dark;--bg:#14152a;--card:#1e2040;--tx:#eceefb;--mu:#9a9fc4;--pr:#8b8bf5;--bd:#32355e}}
+*{box-sizing:border-box}html,body{margin:0}body{background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,Segoe UI,Arial,sans-serif}
+.w{max-width:720px;margin:0 auto;padding:20px 16px}
+h1{font-size:26px;margin:8px 0}.mu{color:var(--mu)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:18px;margin:12px 0}
+.ch{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:12px;padding:14px 16px;margin:8px 0;font:inherit;cursor:pointer}
+.ch:hover,.o:hover{border-color:var(--pr)}
+.o{display:block;width:100%;text-align:left;background:var(--card);color:var(--tx);border:2px solid var(--bd);border-radius:10px;padding:12px 14px;margin:8px 0;font:inherit;cursor:pointer}
+.o.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,transparent)}
+.o.no{border-color:var(--no);background:color-mix(in srgb,var(--no) 15%,transparent)}
+.b{background:var(--pr);color:#fff;border:0;border-radius:10px;padding:11px 20px;font:inherit;cursor:pointer;margin-top:8px}
+.b.g{background:transparent;color:var(--pr);border:1px solid var(--pr)}
+.bar{height:8px;background:var(--bd);border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--pr)}
+.tabs{display:flex;gap:8px;margin:12px 0}.tabs button{flex:1}
+details{margin:8px 0}summary{cursor:pointer;font-weight:600}
+</style></head><body><div class="w" id="app"></div>
+<script>
+// Format: question|optA|optB|optC|optD|correctIndex(0-3)
+const CH={
+"Ch 1 – Intelligent Agents":`The action of a simple reflex agent depends completely upon|Perception history|Current perception|Learning theory|Utility functions|1
+Which instruments are used for perceiving and acting upon the environment?|Sensors and Actuators|Sensors|Perceiver|None|0
+What is an agent's percept sequence?|Used to perceive the environment|Complete history of actuators|Complete history of perceived things|None|2
+How many types of agents are there in AI?|1|2|3|4|3
+What is the rule of a simple reflex agent?|Simple-action rule|Condition-action rule|Simple & Condition-action rule|None|1
+Which agent deals with happy and unhappy states?|Simple reflex|Model based|Learning|Utility based|3
+Which action sequences are used to achieve the agent's goal?|Search|Plan|Retrieve|Both Search & Plan|3
+AI has expansion in the following application|Planning and Scheduling|Game Playing|Diagnosis|All of the mentioned|3
+What is an 'agent'?|Perceives its environment through sensors and acts on it through actuators|Takes input and performs desired operations|An embedded program controlling a line-following robot|All of the mentioned|0
+Agent behavior is best described by|Perception sequence|Agent function|Sensors and Actuators|Environment|1
+A rational agent is one who always does the right thing.|True|False||0
+An omniscient agent knows the actual outcome of its actions (impossible in reality); a rational agent does the right thing (possible).|True|False||0
+Possible environment of a Satellite Image Analysis System?|Computers in space and earth|Image categorization techniques|Statistical data on pixel intensity|All of the mentioned|3
+A crossword puzzle is|Fully Observable|Partially Observable|All of the mentioned|None|0
+The game of Poker is a single agent.|True|False||1
+An agent is composed of|Architecture|Agent Function|Perception Sequence|Architecture and Program|3
+An AI system is composed of|Agent|Environment|Both A and B|None|2
+Which is NOT a type of agent in AI?|Model based|Utility based|Simple reflex|Action based|3
+Full form of PEAS|Perceptual Measure, Environment, Actuators, Sensors|Performance Measure, Environment, Actuators, Sensors|Performance Measure, Entity, Actuators, Sensors|Performance Measure, Environment, Agent Function, Sensors|1
+Which is NOT a property of environment?|Discrete / Continuous|Static / Dynamic|Deterministic / Non-deterministic|No agent / Multiple agents|3
+Chess is an example of which property?|Discrete|Continuous|Episodic|Non-deterministic|0
+Most powerful AI agent?|Simple reflex|Model based reflex|Goal based|Utility based|3`,
+"Ch 2 – Problem Solving Agents":`Which is used to improve the agent's performance?|Perceiving|Learning|Observing|None|1
+Which agent deals with happy and unhappy states?|Simple reflex|Model based|Learning|Utility based|3
+External actions of the agent are selected by ___ elements|Perceive|Performance|Learning|Actuator|3
+Main task of a problem-solving agent?|Solve the problem and reach goal|Find which sequence of actions reaches the goal state|All of the mentioned|None|1
+A search algorithm takes ___ as input and returns ___ as output|Input, output|Problem, solution|Solution, problem|Parameters, sequence of actions|1
+The set of actions in a state space is formulated by a|Intermediate states|Initial state|Successor function|None|2
+Which is considered the most powerful AI agent?|Simple reflex|Model based reflex|Goal based|Utility based|3
+An optimal solution has the highest path cost among all solutions.|True|False||1
+Which is a valid AI agent type?|Simple reflex|Model based reflex|Goal based|All of the above|3
+Which learning-agent component gathers feedback?|Critic|Performance element|Problem generator|Learning element|0
+Role of the problem generator in a learning agent?|Delivers feedback suggestions|Performs initial operations|Suggests new experiences|Questions agent responsibilities|2`,
+"Ch 3 – Search Algorithms":`Main task of a problem-solving agent?|Solve the problem and reach goal|Find the sequence of actions to the goal state|Both A and B|None|2
+Time complexity of Breadth-First Search?|b|b^d|b^2|b^b|1
+Depth-First Search is implemented with ___ data structure|LIFO|LILO|FIFO|FILO|0
+Greedy search expands the node|Shallowest|Deepest|Closest to the goal|—|2
+Disadvantage of Greedy Best-First Search?|Neither complete nor optimal|Can get stuck in loops; not optimal|Multiple long paths with cost ≤ C*|May not terminate on one path|1
+What is the branching factor?|Length of shortest path to goal|Average number of child nodes|Always finding an optimal solution|None|1
+Space complexity of Depth-First Search?|b|b^2|b^b|b^m|3
+Removing detail from a state representation is called|Extraction|Abstraction|Information Retrieval|Data Mining|1
+When is breadth-first search optimal?|Few nodes|All step costs are equal|Step costs are unequal|All of the above|1
+Heuristic function of greedy best-first search|f(n) != h(n)|f(n) < h(n)|f(n) = h(n)|f(n) > h(n)|2
+A* is based on|Breadth-First Search|Depth-First Search|Uniform Cost Search|Best-First Search|3
+A search algorithm takes ___ as input and returns ___ as output|Input, output|Problem, solution|Solution, problem|Parameters, sequence of actions|1
+The set of actions in a state space is formulated by a|Intermediate states|Initial state|Successor function|None|2
+An optimal solution has the highest path cost among all solutions.|True|False||1
+Which search method takes less memory?|Depth-First|Breadth-First|Linear|Optimal|0
+Which search is also called blind search?|Uninformed|Informed|Simple reflex|All|0
+Space complexity of Depth-First Search?|O(b)|O(bl)|O(m)|O(bm)|3
+Which search imposes a fixed depth limit?|Depth-limited|Depth-first|Iterative deepening|Bidirectional|0
+Which search uses a stack?|Depth-limited|Depth-first|Breadth-first|None|1
+DFS always expands the ___ node in the fringe|Shallowest|Child|Deepest|Minimum cost|2
+BFS always expands the ___ node in the fringe|Shallowest|Child|Deepest|Minimum cost|0
+Other name of informed search?|Simple|Heuristic|Online|None|1
+Which uses problem-specific knowledge beyond the definition?|Informed search|DFS|BFS|Uninformed search|0
+What improves heuristic search performance?|Quality of nodes|Quality of heuristic function|Simple form of nodes|None|1
+Heuristic function h(n) is|Lowest path cost|Cheapest path root to goal|Estimated cost of cheapest path to goal|Average path cost|2
+Evaluation function in A*?|Heuristic function|Path cost from start|Path cost from start + heuristic cost|Average of both|2`,
+"Ch 4 – Expert Systems":`Components of Expert Systems?|Knowledge Base|Inference Engine|User Interface|All of the above|3`,
+"Ch 5 – Fuzzy Logic":`Form of Fuzzy logic?|Two-valued|Crisp set|Many-valued|Binary set|2
+Truth values of traditional sets vs fuzzy sets|Either 0 or 1; between 0 & 1|Between 0 & 1; either 0 or 1|Between 0 & 1; between 0 & 1|Either 0 or 1; either 0 or 1|0
+Set membership values are represented by|Discrete set|Degree of truth|Probabilities|Degree of truth & Probabilities|1
+Fuzzy operators are|AND|OR|NOT|All of the mentioned|3
+Linguistic operators applied to fuzzy sets are called|Hedges|Lingual variable|Fuzz variable|None|0
+Fuzzy logic is usually represented as|IF-THEN-ELSE rules|IF-THEN rules|Both|None|1
+Mapping each element of X to a value between 0 and 1 is called|Membership value|Degree of membership|Both A and B|—|2
+IF temperature=Warm AND target=Warm THEN|Heat|No_Change|Cool|None|1
+μa={0.2,0.5,0.6,0.1,0.9}, μb={0.1,0.5,0.2,0.7,0.8}; μa ∩ μb =|{0.2,0.5,0.6,0.7,0.9}|{0.2,0.5,0.2,0.1,0.8}|{0.1,0.5,0.6,0.1,0.8}|{0.1,0.5,0.2,0.1,0.8}|3
+Order of steps in designing a fuzzy logic machine|Fuzzification → Rule evaluation → Defuzzification|Fuzzification → Defuzzification → Rule evaluation|Rule evaluation → Fuzzification → Defuzzification|Rule evaluation → Defuzzification → Fuzzification|0
+A={0.6,0.5,0.1,0.7,0.8}, B={0.9,0.2,0.6,0.8,0.5}; μ(A∪B)'(x) =|{0.9,0.5,0.6,0.8,0.8}|{0.6,0.2,0.1,0.7,0.5}|{0.1,0.5,0.4,0.2,0.2}|{0.1,0.5,0.4,0.2,0.3}|2`};
+const W=[ // written questions: [chapter, question, model answer]
+["Ch 1","Brief intro to the Turing test","A test proposed by Alan Turing: a human interrogator chats with a hidden human and a machine; if the interrogator cannot reliably tell which is the machine, the machine is considered intelligent."],
+["Ch 1","Define an agent; how does a simple reflex agent operate?","An agent perceives its environment through sensors and acts on it through actuators. A simple reflex agent picks actions from the current percept only, using condition-action rules (IF condition THEN action)."],
+["Ch 1","Example of a partially observable game","Poker: you cannot see the opponents' cards, so the state is only partially observable."],
+["Ch 1","Simple reflex vs model-based reflex agents","Simple reflex: uses only the current percept. Model-based: keeps an internal state/model of how the world evolves, so it handles partially observable environments."],
+["Ch 1","Reflex agents vs goal-based agents","Reflex agents act by fixed condition-action rules; goal-based agents consider future consequences and choose actions (search/planning) that achieve a goal."],
+["Ch 2","What is a Learning Agent?","An agent that improves its performance from experience. Components: performance element, critic, learning element, problem generator."],
+["Ch 2","How do we formulate a problem?","Define: initial state, actions (successor function), transition model, goal test, and path cost."],
+["Ch 3","Major components for measuring problem-solving performance?","Completeness, optimality, time complexity, space complexity."],
+["Ch 4","Basic structure of an expert system and how the parts interact","Knowledge base + inference engine + user interface (plus working memory/explanation facility). The user asks via the interface; the inference engine applies knowledge-base rules to facts and returns advice."],
+["Ch 4","Main purpose of Expert Systems?","To capture human expert knowledge in a domain and use it to give advice, diagnose and solve problems."],
+["Ch 4","Conventional programs vs rule-based systems","Conventional: knowledge and control are mixed in code (algorithmic). Rule-based: knowledge (rules) is separate from the inference engine and easy to modify."],
+["Ch 4","Advantages of Expert Systems over human experts","Permanent, consistent, available 24/7, reproducible, cheaper, can be documented and explain reasoning."],
+["Ch 4","Define Inference Engine","The component that applies reasoning (matching rules to facts) to the knowledge base to derive conclusions."],
+["Ch 4","What is a Knowledge Base?","The store of domain facts and rules (expert knowledge) used by the system."],
+["Ch 4","Define Forward and Backward Chaining","Forward: data-driven, start from facts and fire rules toward conclusions. Backward: goal-driven, start from a hypothesis and look for facts supporting it."]];
+const $=s=>document.querySelector(s),app=$('#app');let S={};
+const parse=t=>t.split('\n').map(l=>{const p=l.split('|');return{q:p[0],o:p.slice(1,5).filter(x=>x),a:+p[5]}});
+function home(){app.innerHTML=`<h1>🎓 QuizMaster</h1><p class="mu">AI Applications – pick a chapter</p>`+
+Object.keys(CH).map((k,i)=>`<button class="ch" onclick="start(${i})"><b>${k}</b><span class="mu">${parse(CH[k]).length} questions</span></button>`).join('')+
+`<button class="ch" onclick="startAll()"><b>🔀 All chapters (shuffled)</b><span class="mu">${Object.values(CH).reduce((n,c)=>n+parse(c).length,0)} questions</span></button>
+<button class="ch" onclick="written()"><b>📝 Written questions</b><span class="mu">${W.length} cards</span></button>`}
+function begin(qs,t){S={qs,i:0,s:0,t,d:false,w:[]};show()}
+function start(i){const k=Object.keys(CH)[i];begin(parse(CH[k]),k)}
+function startAll(){const a=[].concat(...Object.values(CH).map(parse));a.sort(()=>Math.random()-.5);begin(a,'All chapters')}
+function show(){const q=S.qs[S.i];S.d=false;
+app.innerHTML=`<button class="b g" onclick="home()">← Back</button><div class="mu" style="margin-top:12px">${S.t} · ${S.i+1}/${S.qs.length}</div>
+<div class="bar"><i style="width:${S.i/S.qs.length*100}%"></i></div><div class="card"><h3 style="margin-top:0">${q.q}</h3>`+
+q.o.map((x,j)=>`<button class="o" onclick="pick(${j})">${'ABCD'[j]}. ${x}</button>`).join('')+`</div><div id="nx"></div>`}
+function pick(j){if(S.d)return;S.d=true;const q=S.qs[S.i];if(j==q.a)S.s++;else S.w.push(q);
+document.querySelectorAll('.o').forEach((b,k)=>{if(k==q.a)b.classList.add('ok');else if(k==j)b.classList.add('no')});
+$('#nx').innerHTML=`<button class="b" onclick="next()">${S.i+1<S.qs.length?'Next →':'Finish'}</button>`}
+function next(){S.i++;S.i<S.qs.length?show():done()}
+function done(){const p=Math.round(S.s/S.qs.length*100);
+app.innerHTML=`<h1>Result</h1><div class="card"><h2 style="margin:0">${S.s} / ${S.qs.length} (${p}%)</h2><p class="mu">${p>=85?'Excellent! 🎉':p>=60?'Good job, keep going 💪':'Review and try again 📚'}</p></div>`+
+(S.w.length?`<h3>Review mistakes</h3>`+S.w.map(q=>`<div class="card"><b>${q.q}</b><p class="mu">Correct: ${q.o[q.a]}</p></div>`).join(''):'')+
+`<button class="b" onclick="home()">Home</button> <button class="b g" onclick="begin(S.qs.slice().sort(()=>Math.random()-.5),S.t)">Retry shuffled</button>`}
+function written(){app.innerHTML=`<button class="b g" onclick="home()">← Back</button><h1>📝 Written questions</h1><p class="mu">Tap a question to reveal the model answer.</p>`+
+W.map(w=>`<details class="card"><summary>[${w[0]}] ${w[1]}</summary><p>${w[2]}</p></details>`).join('')}
+home();
+</script></body></html>
